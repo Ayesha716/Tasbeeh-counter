@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)file:///C:/Users/aala/Desktop/New%20folder/.html -->
+<html lang="ur"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>تسبیح کاؤنٹر</title>
+  <style>
+    @font-face {
+      font-family: 'JameelNoori';
+      src: url('JameelNooriNastaleeq.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'JameelNoori', serif;
+      background-color: #000000;
+      background-image: url('islamic-bg.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #ffffff;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      font-size: 45px;
+      text-shadow: 0 0 10px #ffd700;
+    }
+
+    .counter {
+      font-size: 50px;
+      margin: 20px;
+      text-shadow: 0 0 8px #00ffcc;
+    }
+
+    button {
+      font-size: 24px;
+      padding: 12px 28px;
+      margin: 10px;
+      background: linear-gradient(145deg, #1a1a1a, #2c2c2c);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #00ffcc;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 18px #ffd700;
+    }
+
+    #lastZikr {
+      margin-top: 20px;
+      font-size: 24px;
+      text-shadow: 0 0 6px #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌙 تسبیح کاؤنٹر</h1>
+
+  <div class="counter" id="count">0</div>
+
+  <div>
+    <button onclick="increaseManually()">➕</button>
+    <button onclick="recite(&#39;بسم اللہ&#39;)">بسم اللہ</button>
+    <button onclick="recite(&#39;یا ودود&#39;)">یا ودود</button>
+    <button onclick="recite(&#39;یا جبار&#39;)">یا جبار</button>
+    <button onclick="recite(&#39;یا لطیف&#39;)">یا لطیف</button>
+    <button onclick="recite(&#39;یا رحمان&#39;)">یا رحمان</button>
+    <button onclick="recite(&#39;یا نور&#39;)">یا نور</button>
+    <button onclick="recite(&#39;یا غفّار&#39;)">یا غفّار</button>
+    <button onclick="recite(&#39;یا سلام&#39;)">یا سلام</button>
+    <button onclick="recite(&#39;یا خالق&#39;)">یا خالق</button>
+    <button onclick="recite(&#39;الحمد للہ&#39;)">الحمد للہ</button>
+    <button onclick="recite(&#39;اللہ اکبر&#39;)">اللہ اکبر</button>
+    <button onclick="recite(&#39;لا الہ الا اللہ&#39;)">لا الہ الا اللہ</button>
+    <button onclick="recite(&#39;سبحان اللہ&#39;)">سبحان اللہ</button>
+    <button onclick="recite(&#39;یا حی یا قیوم&#39;)">یا حی یا قیوم</button>
+    <button onclick="decreaseManually()">➖</button>
+    <button onclick="resetCounter()">ری سیٹ</button>
+  </div>
+
+  <p id="lastZikr">آخری ذکر: -</p>
+
+  <audio id="clickSound" src="beep.mp3" preload="auto"></audio>
+
+  <script>
+    let count = 0;
+    const countDisplay = document.getElementById("count");
+    const lastZikr = document.getElementById("lastZikr");
+    const clickSound = document.getElementById("clickSound");
+
+    function playSound() {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
+
+    function recite(text) {
+      count++;
+      countDisplay.textContent = count;
+      lastZikr.textContent = "آخری ذکر: " + text;
+      playSound();
+    }
+
+    function resetCounter() {
+      count = 0;
+      countDisplay.textContent = count;
+      lastZikr.textContent = "آخری ذکر: -";
+    }
+
+    function increaseManually() {
+      count++;
+      countDisplay.textContent = count;
+      lastZikr.textContent = "آخری ذکر: ➕ دستی اضافہ";
+      playSound();
+    }
+
+    function decreaseManually() {
+      if (count > 0) count--;
+      countDisplay.textContent = count;
+      lastZikr.textContent = "آخری ذکر: ➖ دستی کمی";
+      playSound();
+    }
+  </script>
+
+</body></html>
